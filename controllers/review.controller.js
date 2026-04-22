@@ -76,4 +76,4 @@ async function deleteReview(req, res) {
 
 
 
-export default {createReview,getReviewByIdFilmId}
+export default {createReview,getReviewByIdFilmId,deleteReview}

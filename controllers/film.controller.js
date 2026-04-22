@@ -46,6 +46,32 @@ async function getAllFilms(req, res) {
 
 
 
+async function getFilmById(req, res) {
+    try {
+        const id = req.params.id;
+
+        const film = await Film.findById(id);
+
+        if (!film) {
+            return res.status(404).json({
+                message: "Film not found"
+            });
+        }
+
+        return res.status(200).json({
+            message: "Film details fetched successfully",
+            data: film
+        });
+
+    } catch (e) {
+        return res.status(500).json({
+            message: "server error",
+            error: e.message
+        });
+    }
+}
+
+
 async function updateFilm(req, res) {
     try{
         const id = req.params.id;
@@ -95,4 +121,4 @@ async function deleteFilm(req, res) {
 }
 
 
-export default {saveFilm,updateFilm,deleteFilm,getAllFilms}
+export default {saveFilm,updateFilm,deleteFilm,getAllFilms,getFilmById}

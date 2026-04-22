@@ -6,6 +6,9 @@ import filmRouter from "./routers/film.router.js";
 import screenRouter from "./routers/screen.router.js";
 import seatRouter from "./routers/seat.router.js";
 import reviewRouter from "./routers/review.router.js";
+import cors from "cors";
+import showtimeRouter from "./routers/showtime.router.js";
+import bookingRouter from "./routers/booking.router.js";
 
 dotenv.config();
 
@@ -14,6 +17,8 @@ const app = express();
 // middlewares
 app.use(express.json())
 
+app.use(cors())
+
 
 // routers
 app.use("/user",userRouter)
@@ -21,6 +26,8 @@ app.use("/film",filmRouter)
 app.use("/screen",screenRouter)
 app.use("/seat",seatRouter)
 app.use("/review",reviewRouter)
+app.use("/showtime",showtimeRouter)
+app.use("/booking",bookingRouter)
 
 
 const port = process.env.PORT
